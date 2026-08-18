@@ -1369,8 +1369,12 @@ WHERE oid IN ('sys.to_date(bigint)'::regprocedure,
 CREATE TABLE to_date_bigint_idx_test (value bigint);
 CREATE INDEX ON to_date_bigint_idx_test (sys.to_date(value));
 ERROR:  functions in index expression must be marked IMMUTABLE
+LINE 1: CREATE INDEX ON to_date_bigint_idx_test (sys.to_date(value))...
+                                                 ^
 CREATE INDEX ON to_date_bigint_idx_test (sys.to_date(value, 'J'));
 ERROR:  functions in index expression must be marked IMMUTABLE
+LINE 1: CREATE INDEX ON to_date_bigint_idx_test (sys.to_date(value, ...
+                                                 ^
 DROP TABLE to_date_bigint_idx_test;
 create table test1(d date);
 insert into test1 values (to_date('2009-12-2', 'syyyy-mm-dd'));
